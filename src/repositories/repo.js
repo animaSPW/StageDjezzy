@@ -1,8 +1,9 @@
+/**
+ * the constants are declared in the constants file
+ * replace fetch with the service function get
+ */
 
-const ApiKey = '5c1b0eda86a5440bb8d110703230208'
-const baseUrlF = ' http://api.weatherapi.com/v1/forecast.json'
-
-
+import { ApiKey, baseUrlF } from "../assets/values/constants";
 
 async function getWeatherForcast(location) {
   const apiUrl = `${baseUrlF}?key=${ApiKey}&q=${location}&days=7`;

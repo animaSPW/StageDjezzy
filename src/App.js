@@ -1,11 +1,11 @@
-import './View/WeatherPage'
-import './App.css';
+import WeatherPage from './views/WeatherPage';
+import './assets/values/styles.css';
 
 function App() {
   return (
-    <div > "hello"</div> 
-  
-
+    <div>
+      <WeatherPage/>
+    </div>
   );
 }
 
