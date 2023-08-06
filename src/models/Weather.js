@@ -24,4 +24,4 @@ class Weather {
   }
 }
 
-export default Weather;
+export  { Weather, hourlyWeather };
