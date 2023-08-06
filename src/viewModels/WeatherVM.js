@@ -4,7 +4,7 @@
  */
 
 import getLocation from  "../helpers/location"
-import Weather from "../models/Weather";
+import {Weather, hourlyWeather} from "../models/Weather";
 import getWeatherForcast from "../repositories/repo"
 
 export default function WeatherVM() {
@@ -14,7 +14,7 @@ export default function WeatherVM() {
       const locationn = await getLocation();
       
       const result= await getWeatherForcast(locationn);
-      return fillup(result);
+      return fillWeatherWeekly(result, fillWeather(result));
       
       
     } catch (error) {
@@ -22,22 +22,59 @@ export default function WeatherVM() {
     }
   }
 
-  function fillup(result){
+  function fillHourlyWeatherArray(result,day) {
+    const hourlyWeatherArray = [];
+  
+    for (let i = 0; i < 24; i++) {
+      const hour = i;
+      const temperature = result.forecast.forecastday[day].hour[i].temp_c;
+      const weatherState = result.forecast.forecastday[day].hour[i].condition.text;
+  
+      const hourlyWeatherInstance = new hourlyWeather(hour, temperature, weatherState);
+      hourlyWeatherArray.push(hourlyWeatherInstance);
+    }
+  
+    return hourlyWeatherArray;
+  }
+  
+  function fillWeather(result) {
     const city = result.location.name;
     const date = result.location.localtime.split(' ')[0];
     const time = result.location.localtime.split(' ')[1];
     const temperature = result.current.temp_c;
+    const averageTemp = result.forecast.forecastday[0].day.avgtemp_c;
     const wind = result.current.wind_kph;
     const humidity = result.current.humidity;
     const weatherState = result.current.condition.text;
+  
+    const hourlyWeatherArray = fillHourlyWeatherArray(result, 0);
     
-    const weatherInstance = new Weather(city, date, time, temperature, wind, humidity, weatherState);
+    const weatherInstance = new Weather(city, date, time, temperature, averageTemp, wind, humidity, weatherState, hourlyWeatherArray);
     console.log(weatherInstance);
     return weatherInstance;
   }
+  function fillWeatherWeekly(result,weatherInstance) {
+    const weeklyWeatherArray = [];
+    weeklyWeatherArray.push(weatherInstance);
+
+    for (let i=1;i<7;i++){
+      const city = result.location.name;
+      const date = result.forecast.forecastday[i].date;
+      const time = ''
+      const temperature = result.forecast.forecastday[i].day.avgtemp_c;
+      const averageTemp= ''
+      const wind = result.forecast.forecastday[i].day.avgvis_km;
+      const humidity = result.forecast.forecastday[i].day.avghumidity;
+      const weatherState = result.forecast.forecastday[i].day.condition.text;
+      const hourlyWeatherArray = fillHourlyWeatherArray(result, i);
+      const weatherInstanceW = new Weather(city, date,time , temperature, averageTemp, wind, humidity, weatherState, hourlyWeatherArray);
+      weeklyWeatherArray.push(weatherInstanceW); 
+    }
+    console.log(weeklyWeatherArray);
+    return weeklyWeatherArray;}
 
   return {
     fetchData,
-    fillup
+    fillWeather
   };
 }
