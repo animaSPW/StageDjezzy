@@ -1,17 +1,29 @@
 import CurrentWeatherView from './views/CurrentWeatherView';
+import WeeklyWeatherView from './views/WeeklyWeatherView';
 import Load from './views/loadingPage';
-import './assets/values/styles.css';
 import React, { useEffect, useState } from "react";
 import WeatherVM from "./viewModels/WeatherVM";
+import { useSelector, useDispatch } from "react-redux";
+import { changement } from './reducers/reducers';
 function App() {
+  console.log("App");
+  const dispatch = useDispatch();
   const weatherVM = WeatherVM();
   const [currentWeather, setCurrentWeather] = useState(null);
   const [weeklyWeather, setWeeklyWeather] = useState(null);
+  const daydisplayed = useSelector(state => state);
+  
+
+    const changeDay = (index) => {
+        console.log(index)
+        dispatch(changement(index))
+    }
 
   useEffect(() => {
     weatherVM.fetchData().then((data) => {
-      setCurrentWeather(data[0]);
+      setCurrentWeather(data[daydisplayed]);
       setWeeklyWeather(data);
+      
     });
   }, []);
 
@@ -25,7 +37,8 @@ function App() {
   }
   return (
     <div>
-      {currentWeather && <CurrentWeatherView currentWeather={currentWeather} />}
+      {currentWeather && <CurrentWeatherView currentWeather={currentWeather} day ={daydisplayed} />}
+      {weeklyWeather && <WeeklyWeatherView weeklyWeather={weeklyWeather} />}
     </div>
   );
 }
