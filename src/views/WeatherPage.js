@@ -19,11 +19,17 @@ import useViewModel from "../viewModels/WeatherVM";
 
 export default function WeatherPage() {
     const { fetchData } = useViewModel();
-    fetchData();
-
+    async function main() {
+        const data = await fetchData();
+        console.log(data);
+    }
+    
+    main();
     return (
         <div>
             This is the weather page
+            
         </div>
+
     )
 }
