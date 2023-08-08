@@ -6,37 +6,37 @@ const CurrentWeatherView = ({ currentWeather, day }) => {
   return (
     <div className="containerStyle">
       <div className="weatherHeaderStyle">
-        <p>{currentWeather.city}</p>
-        <p>{currentWeather.date}</p>
-        <p className="detailStyle">{currentWeather.time}</p>
+        <p>{currentWeather[day].city}</p>
+        <p>{currentWeather[day].date}</p>
+        <p className="detailStyle">{currentWeather[day].time}</p>
       </div>
       <div className="temperatureStyle">
         <i className="material-icons weatherStateStyle">
-          {getWeatherIcon(currentWeather.weatherState)}
+          {getWeatherIcon(currentWeather[day].weatherState)}
         </i>
-        <p className="temperatureStyle">{currentWeather.temperature}°C</p>
+        <p className="temperatureStyle">{currentWeather[day].temperature}°C</p>
       </div>
-      <p className="weatherStateStyle">{currentWeather.weatherState}</p>
-      <p className="detailStyle">Wind: {currentWeather.wind} km/h</p>
-      <p className="detailStyle">Humidity: {currentWeather.humidity}%</p>
+      <p className="weatherStateStyle">{currentWeather[day].weatherState}</p>
+      <p className="detailStyle">Wind: {currentWeather[day].wind} km/h</p>
+      <p className="detailStyle">Humidity: {currentWeather[day].humidity}%</p>
     </div>
   );
 }
 else { return (
   <div className="containerStyle">
     <div className="weatherHeaderStyle">
-      <p>{currentWeather.city}</p>
-      <p>{currentWeather.date}</p>
+      <p>{currentWeather[day].city}</p>
+      <p>{currentWeather[day].date}</p>
           </div>
     <div className="temperatureStyle">
       <i className="material-icons weatherStateStyle">
-        {getWeatherIcon(currentWeather.weatherState)}
+        {getWeatherIcon(currentWeather[day].weatherState)}
       </i>
-      <p className="temperatureStyle">{currentWeather.temperature}°C</p>
+      <p className="temperatureStyle">{currentWeather[day].temperature}°C</p>
     </div>
-    <p className="weatherStateStyle">{currentWeather.weatherState}</p>
-    <p className="detailStyle">Wind: {currentWeather.wind} km/h</p>
-    <p className="detailStyle">Humidity: {currentWeather.humidity}%</p>
+    <p className="weatherStateStyle">{currentWeather[day].weatherState}</p>
+    <p className="detailStyle">Wind: {currentWeather[day].wind} km/h</p>
+    <p className="detailStyle">Humidity: {currentWeather[day].humidity}%</p>
   </div>
 );
 };} 

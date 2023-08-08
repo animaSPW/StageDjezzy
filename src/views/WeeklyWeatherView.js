@@ -1,13 +1,19 @@
 import React from "react";
 import styles from "../assets/values/WeeklyWeatherView.module.css";
-import App from "../App";
+import { useDispatch } from "react-redux";
+import { changement } from '../reducers/reducers';
 
 const WeeklyWeatherView = ({ weeklyWeather }) => {
+  const dispatch = useDispatch();
+  const changeDay = (index) => {
+    console.log(index)
+    dispatch(changement(index))
+}
   return (
     <div className={styles.weeklyContainerStyle}>
       <div className={styles.weeklyArrayContainer}>
         {weeklyWeather.map((dayWeather, index) => (
-          <div key={index} onClick={() => App.changeDay(index)} className={styles.weeklyDayStyle}>
+          <div key={index} onClick={() => changeDay(index)} className={styles.weeklyDayStyle}>
             <p className={styles.dayName}>{getDayName(dayWeather.date)}</p>
             <div>
               <p className={styles.weatherStateStyle}>{dayWeather.weatherState}</p>
