@@ -29,8 +29,9 @@ export default function WeatherVM() {
       const hour = i;
       const temperature = result.forecast.forecastday[day].hour[i].temp_c;
       const weatherState = result.forecast.forecastday[day].hour[i].condition.text;
+      const weatherLogo = result.forecast.forecastday[day].hour[i].condition.icon;
   
-      const hourlyWeatherInstance = new hourlyWeather(hour, temperature, weatherState);
+      const hourlyWeatherInstance = new hourlyWeather(hour, temperature, weatherState, weatherLogo);
       hourlyWeatherArray.push(hourlyWeatherInstance);
     }
   
@@ -46,10 +47,11 @@ export default function WeatherVM() {
     const wind = result.current.wind_kph;
     const humidity = result.current.humidity;
     const weatherState = result.current.condition.text;
+    const weatherLogo = result.current.condition.icon;
   
     const hourlyWeatherArray = fillHourlyWeatherArray(result, 0);
     
-    const weatherInstance = new Weather(city, date, time, temperature, averageTemp, wind, humidity, weatherState, hourlyWeatherArray);
+    const weatherInstance = new Weather(city, date, time, temperature, averageTemp, wind, humidity, weatherState,weatherLogo, hourlyWeatherArray);
     console.log(weatherInstance);
     return weatherInstance;
   }
@@ -66,8 +68,9 @@ export default function WeatherVM() {
       const wind = result.forecast.forecastday[i].day.avgvis_km;
       const humidity = result.forecast.forecastday[i].day.avghumidity;
       const weatherState = result.forecast.forecastday[i].day.condition.text;
+      const weatherLogo = result.forecast.forecastday[i].day.condition.icon;
       const hourlyWeatherArray = fillHourlyWeatherArray(result, i);
-      const weatherInstanceW = new Weather(city, date,time , temperature, averageTemp, wind, humidity, weatherState, hourlyWeatherArray);
+      const weatherInstanceW = new Weather(city, date,time , temperature, averageTemp, wind, humidity, weatherState,weatherLogo, hourlyWeatherArray);
       weeklyWeatherArray.push(weatherInstanceW); 
     }
     console.log(weeklyWeatherArray);

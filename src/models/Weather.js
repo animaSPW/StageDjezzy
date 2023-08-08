@@ -3,15 +3,16 @@
  */
 
 class hourlyWeather {
-  constructor(hour, temperature, weatherState) {
+  constructor(hour, temperature, weatherState, weatherLogo) {
     this.hour = hour;
     this.temperature = temperature;
     this.weatherState = weatherState;
+    this.weatherLogo = weatherLogo;
   }
 }
 
 class Weather {
-  constructor(city, date, time, temperature,averageTemp, wind, humidity, weatherState, hourlyWeatherArray) {
+  constructor(city, date, time, temperature,averageTemp, wind, humidity, weatherState,weatherLogo, hourlyWeatherArray) {
     this.city = city;
     this.date = date;
     this.time = time;
@@ -20,6 +21,7 @@ class Weather {
     this.wind = wind;
     this.humidity = humidity;
     this.weatherState = weatherState;
+    this.weatherLogo = weatherLogo;
     this.hourlyWeatherArray = hourlyWeatherArray;
   }
 }

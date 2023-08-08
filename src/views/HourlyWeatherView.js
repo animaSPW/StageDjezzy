@@ -11,7 +11,7 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
         {selectedDayWeather.hourlyWeatherArray.map(hourData => (
           <div key={hourData.hour} className={styles["hour"]}>
             <p>{hourData.hour}:00</p>
-            <p>{hourData.weatherState}</p>
+            <p><img src={hourData.weatherLogo} alt="Weather Logo" className={styles.weatherLogo} /></p>
             <p>{hourData.temperature}°C</p>
           </div>
         ))}
