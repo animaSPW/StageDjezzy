@@ -12,7 +12,8 @@
   padding: 10px;
   overflow-x: scroll;
   max-height: 320px;
-  width: 64%;
+  width: 100%;
+  max-width: 64%;
   z-index: 100; /* Optional: If needed, adjust the z-index to control stacking order */
 }
   
@@ -38,4 +39,28 @@
   /* Adjust the width and height to control the size of the weather logos */
   width: 30px;
   height: 30px;
+}
+
+
+/* Pour les écrans plus petits */
+@media (max-width: 1115px) {
+  .containerStyle {
+    position: static; /* Pour que le bloc ne soit plus en position absolue */
+    width: 100%;
+    max-width: none; /* Supprimer la largeur maximale */
+    margin-bottom: 20px; /* Ajouter un espacement entre les blocs */
+  }
+
+  .weeklyContainerStyle {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
+  .hourly-weather {
+    position: static;
+    width: 100%;
+    max-width: none;
+  }
 }
