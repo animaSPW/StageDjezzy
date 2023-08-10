@@ -5,7 +5,7 @@
 
 import getLocation from  "../helpers/location"
 import {Weather, hourlyWeather} from "../models/Weather";
-import getWeatherForcast from "../repositories/repo"
+import {getWeatherForcast,getPokemon,getWeatherBasedPokemonType }from "../repositories/repo"
 
 export default function WeatherVM() {
 
@@ -13,14 +13,25 @@ export default function WeatherVM() {
     try {
       const locationn = await getLocation();
       
-      const result= await getWeatherForcast(locationn);
-      return fillWeatherWeekly(result, fillWeather(result));
+      const result1= await getWeatherForcast(locationn);
+      const result = await fillWeather(result1);
+      return fillWeatherWeekly(result1, result);
       
       
     } catch (error) {
       console.error("An error occurred:", error);
     }
   }
+  async function fetchpokemon(weatherState) {
+    try {
+      const pokemonType = await getWeatherBasedPokemonType(weatherState);
+      const pokemon = await getPokemon(pokemonType);
+      return pokemon;
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }
+
 
   function fillHourlyWeatherArray(result,day) {
     const hourlyWeatherArray = [];
@@ -38,7 +49,7 @@ export default function WeatherVM() {
     return hourlyWeatherArray;
   }
   
-  function fillWeather(result) {
+   async function fillWeather(result) {
     const city = result.location.name;
     const date = result.location.localtime.split(' ')[0];
     const time = result.location.localtime.split(' ')[1];
@@ -47,15 +58,16 @@ export default function WeatherVM() {
     const wind = result.current.wind_kph;
     const humidity = result.current.humidity;
     const weatherState = result.current.condition.text;
+    const pokemon = await fetchpokemon(weatherState);
     const weatherLogo = result.current.condition.icon;
   
     const hourlyWeatherArray = fillHourlyWeatherArray(result, 0);
     
-    const weatherInstance = new Weather(city, date, time, temperature, averageTemp, wind, humidity, weatherState,weatherLogo, hourlyWeatherArray);
+    const weatherInstance = new Weather(city, date, time, temperature, averageTemp, wind, humidity, weatherState,pokemon.sprite,pokemon.name,weatherLogo, hourlyWeatherArray);
     console.log(weatherInstance);
     return weatherInstance;
   }
-  function fillWeatherWeekly(result,weatherInstance) {
+  async function fillWeatherWeekly(result,weatherInstance) {
     const weeklyWeatherArray = [];
     weeklyWeatherArray.push(weatherInstance);
 
@@ -68,9 +80,10 @@ export default function WeatherVM() {
       const wind = result.forecast.forecastday[i].day.avgvis_km;
       const humidity = result.forecast.forecastday[i].day.avghumidity;
       const weatherState = result.forecast.forecastday[i].day.condition.text;
+      const pokemon = await fetchpokemon(weatherState);
       const weatherLogo = result.forecast.forecastday[i].day.condition.icon;
       const hourlyWeatherArray = fillHourlyWeatherArray(result, i);
-      const weatherInstanceW = new Weather(city, date,time , temperature, averageTemp, wind, humidity, weatherState,weatherLogo, hourlyWeatherArray);
+      const weatherInstanceW = new Weather(city, date,time , temperature, averageTemp, wind, humidity, weatherState,pokemon.sprite,pokemon.name,weatherLogo, hourlyWeatherArray);
       weeklyWeatherArray.push(weatherInstanceW); 
     }
     console.log(weeklyWeatherArray);

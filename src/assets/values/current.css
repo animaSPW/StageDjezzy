@@ -15,7 +15,7 @@
     background-color: #fafafa;
     color: #333;
     font-family: Roboto, sans-serif;
-    width: 350px;
+    width: 600px;
     height: 250px;
   }
   
@@ -53,4 +53,19 @@
     margin: 2px 0;
     color: #777;
   }
+  .pokemonStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
   
+  .pokemonStyle img {
+    max-width: 85px; /* Adjust the image size as needed */
+  }
+  
+  .pokemonStyle p {
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-top: 5px;
+  }

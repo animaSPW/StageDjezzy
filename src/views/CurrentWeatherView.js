@@ -14,9 +14,14 @@ const CurrentWeatherView = ({ currentWeather, day }) => {
         <p>{currentWeather[day].date}</p>
         <p className="detailStyle">{currentWeather[day].time}</p>
       </div>
+      
       <div className="temperatureStyle">
+      <div className="pokemonStyle">
+        <img src={currentWeather[day].sprite} alt="logo pokemon" />
+        <p>{currentWeather[day].name}</p>
+      </div>
         <i className="material-icons weatherStateStyle">
-          <img src={currentWeather[day].weatherLogo} alt="Weather Logo" />
+        <img src={currentWeather[day].weatherLogo} alt="Weather Logo" />
         </i>
         <p className="temperatureStyle">{currentWeather[day].temperature}°C</p>
       </div>
@@ -24,6 +29,7 @@ const CurrentWeatherView = ({ currentWeather, day }) => {
       <p className="detailStyle">Wind: {currentWeather[day].wind} km/h</p>
       <p className="detailStyle">Humidity: {currentWeather[day].humidity}%</p>
     </div>
+    
   );
 }
 else { return (
@@ -32,10 +38,14 @@ else { return (
       <p>{currentWeather[day].city}</p>
       <p>{currentWeather[day].date}</p>
           </div>
+          
     <div className="temperatureStyle">
+    <div className="pokemonStyle">
+        <img src={currentWeather[day].sprite} alt="logo pokemon" />
+        <p>{currentWeather[day].name}</p>
+      </div>
       <i className="material-icons weatherStateStyle">
         <img src={currentWeather[day].weatherLogo} alt="Weather Logo" />
-        
       </i>
       <p className="temperatureStyle">{currentWeather[day].temperature}°C</p>
     </div>
