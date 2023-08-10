@@ -37,7 +37,7 @@ function App() {
     <div>
       {weeklyWeather && <CurrentWeatherView currentWeather={weeklyWeather} day ={daydisplayed} />}
       {weeklyWeather && <WeeklyWeatherView weeklyWeather={weeklyWeather} />}
-      {weeklyWeather && <HourlyWeatherView HourlylyWeather={weeklyWeather}day ={daydisplayed} />}*/
+      {weeklyWeather && <HourlyWeatherView HourlylyWeather={weeklyWeather}day ={daydisplayed} />}
     </div>
   );
 }

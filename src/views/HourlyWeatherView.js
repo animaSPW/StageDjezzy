@@ -13,7 +13,7 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
   const minTemperature = Math.min(...chartData.map(dataPoint => dataPoint.temperature));
   const maxTemperature = Math.max(...chartData.map(dataPoint => dataPoint.temperature));
   const yAxisPadding = 1;
-  const xAxisPadding = 10;
+  const xAxisPadding = 14;
 
   // Ajuster la hauteur en définissant le domaine de l'axe Y
   const yDomain = [minTemperature, maxTemperature + yAxisPadding];
