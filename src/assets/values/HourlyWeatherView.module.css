@@ -1,17 +1,20 @@
 /* HourlyWeatherView.module.css */
 
+/* HourlyWeatherView.module.css */
+
 .hourly-weather {
-    display: flex;
-    position: fixed;
-    bottom: 20px; /* Adjust this value as needed */
-    left: 0;
-    right: 0;
-    background-color: #f9f9f9;
-    padding: 10px;
-    overflow-x: scroll; /* Enable horizontal scrolling */
-    max-height: 120px; /* Adjust this value to set the maximum height of the hourly array */
-    width: 62%;
-  }
+  display: flex;
+  position: fixed;
+  bottom: 60px; /* Adjust this value to move the box up */
+  left: 0;
+  right: 0;
+  background-color: #f9f9f9;
+  padding: 10px;
+  overflow-x: scroll;
+  max-height: 320px;
+  width: 67%;
+  z-index: 100; /* Optional: If needed, adjust the z-index to control stacking order */
+}
   
   .hour {
     flex: 0 0 auto;
