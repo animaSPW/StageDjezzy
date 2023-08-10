@@ -19,12 +19,6 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
   const yAxisPadding = 1;
   const xAxisPadding = 14;
 
-<<<<<<< HEAD
-
-  const yDomain = [minTemperature, maxTemperature + yAxisPadding];
-  const yRange = yDomain[1] - yDomain[0];
-  const adjustedYDomain = [minTemperature - 5, maxTemperature + yAxisPadding + yRange * 0.2];
-=======
   const yDomain = [minTemperature, maxTemperature + yAxisPadding];
   const yRange = yDomain[1] - yDomain[0];
 
@@ -40,7 +34,6 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
     }
     return null;
   };
->>>>>>> ebb62d344ca5e56cacb257458767f3d67305aadf
 
   return (
     <div className={styles['hourly-weather']}>
