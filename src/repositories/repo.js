@@ -18,6 +18,7 @@ async function getWeatherForcast(location) {
   }
 }
 
+/* returns a w pokemon type based on weather stat*/
 const getWeatherBasedPokemonType = (weatherState) => {
   const weatherToPokemonType = {
     "Sunny": "fire",
@@ -73,6 +74,7 @@ const getWeatherBasedPokemonType = (weatherState) => {
   return weatherToPokemonType[weatherState] || "unknown";
 }
 
+/*  returns a random pokemon name + its type based on the pokemon type */
 async function getPokemon(pokemonType) {
   const apiUrl = `${baseUrlP}${pokemonType}`;
   try {

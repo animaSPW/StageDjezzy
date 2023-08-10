@@ -1,4 +1,4 @@
-
+/* this a loading page that waits the data to be loaded from the API */
 const Load = () => {
     return (
 <div style={{

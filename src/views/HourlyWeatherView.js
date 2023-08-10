@@ -10,15 +10,18 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
     temperature: hourData.temperature,
   }));
 
+  /* the chart data is an array of objects that contains the hour and the temperature of each hour,
+  the hour is the x axis and the temperature is the y axis
+  */
   const minTemperature = Math.min(...chartData.map(dataPoint => dataPoint.temperature));
   const maxTemperature = Math.max(...chartData.map(dataPoint => dataPoint.temperature));
   const yAxisPadding = 1;
   const xAxisPadding = 14;
 
-  // Ajuster la hauteur en définissant le domaine de l'axe Y
+
   const yDomain = [minTemperature, maxTemperature + yAxisPadding];
   const yRange = yDomain[1] - yDomain[0];
-  const adjustedYDomain = [minTemperature - 5, maxTemperature + yAxisPadding + yRange * 0.2]; // Réduire la hauteur de 20%
+  const adjustedYDomain = [minTemperature - 5, maxTemperature + yAxisPadding + yRange * 0.2];
 
   return (
     <div className={styles['hourly-weather']}>

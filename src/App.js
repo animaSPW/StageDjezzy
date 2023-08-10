@@ -1,7 +1,6 @@
 import CurrentWeatherView from './views/CurrentWeatherView';
 import WeeklyWeatherView from './views/WeeklyWeatherView';
 import HourlyWeatherView from './views/HourlyWeatherView';
-import { getPokemon } from './repositories/repo'; 
 import Load from './views/loadingPage';
 import React, { useEffect, useState } from "react";
 import WeatherVM from "./viewModels/WeatherVM";
