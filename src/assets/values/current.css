@@ -15,7 +15,8 @@
     background-color: #fafafa;
     color: #333;
     font-family: Roboto, sans-serif;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 250px;
   }
   
@@ -69,3 +70,27 @@
     font-size: 14px; /* Adjust the font size as needed */
     margin-top: 5px;
   }
+
+
+  /* Pour les écrans plus petits */
+@media (max-width: 1115px) {
+  .containerStyle {
+    position: static; /* Pour que le bloc ne soit plus en position absolue */
+    width: 100%;
+    max-width: none; /* Supprimer la largeur maximale */
+    margin-bottom: 20px; /* Ajouter un espacement entre les blocs */
+  }
+
+  .weeklyContainerStyle {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
+  .hourly-weather {
+    position: static;
+    width: 100%;
+    max-width: none;
+  }
+}
