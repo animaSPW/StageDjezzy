@@ -28,7 +28,7 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
       return (
         <div className={styles['custom-tooltip']}>
           <img src={data.weatherLogo} alt="Weather Logo" className={styles.weatherLogo} />
-          <p>{`${data.temperature}°C`}</p>
+          <p className={styles['tooltip-temperature']}>{`${data.temperature}°C`} </p>
         </div>
       );
     }
@@ -43,8 +43,8 @@ const WeatherDayView = ({ HourlylyWeather, day }) => {
           <YAxis hide domain={[minTemperature - 5, maxTemperature + yAxisPadding + yRange * 0.2]} />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
-          <Line type="monotone" dataKey="temperature" stroke="#8884d8" dot={{ r: 6 }} />
-          <LabelList dataKey="temperature" position="top" />
+          <Line type="monotone" dataKey="temperature" stroke="#1d9bf0"  />
+       
         </LineChart>
       </ResponsiveContainer>
     </div>

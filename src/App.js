@@ -5,6 +5,7 @@ import Load from './views/loadingPage';
 import React, { useEffect, useState } from "react";
 import WeatherVM from "./viewModels/WeatherVM";
 import { useSelector } from "react-redux";
+import './assets/values/index.css';
 
 function App() {
 
